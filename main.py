@@ -12,6 +12,7 @@ def generate_article(keyword, writing_style, word_count):
                 {"role": "user", "content": "Write a SEO optimized word article about " + keyword},
                 {"role": "user", "content": "The article should be " + writing_style},
                 {"role": "user", "content": "The article length should " + str(word_count)},
+                {"role": "user", "content": "in Language " + language},
             ]
     )
     result = ''
@@ -22,6 +23,7 @@ def generate_article(keyword, writing_style, word_count):
     return result
 
 keyword = st.text_input("Enter a keyword:")
+language = st.text_input("Enter a Language:")
 writing_style = st.selectbox("Select writing style:", ["Casual", "Informative", "Witty"])
 word_count = st.slider("Select word count:", min_value=300, max_value=1000, step=100, value=300)
 submit_button = st.button("Generate Article")
