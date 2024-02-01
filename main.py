@@ -4,7 +4,7 @@ import openai
 openai.api_key = "INSERT YOUR API KEY HERE"
 st.title("SEO Article Writer with ChatGPT")
 
-def generate_article(keyword, writing_style, word_count):
+def generate_article(keyword, language, writing_style, word_count):
     #return "This is a test article generated without making API calls."
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -31,7 +31,7 @@ submit_button = st.button("Generate Article")
 if submit_button:
     message = st.empty()
     message.text("Busy generating...")
-    article = generate_article(keyword, writing_style, word_count)
+    article = generate_article(keyword, language, writing_style, word_count)
     message.text("")
     st.write(article)
     st.download_button(
